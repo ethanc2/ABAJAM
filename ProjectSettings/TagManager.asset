@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Ball
+  - Basket
+  - Court
+  - Player
+  - AI
+  - ShootingSpot
+  - ScoreZone
+  - Boundary
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - Players
+  - Ball
+  - Court
+  - Boundaries
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 1234567890
+    locked: 0
+  - name: Court
+    uniqueID: 2345678901
+    locked: 0
+  - name: Players
+    uniqueID: 3456789012
+    locked: 0
+  - name: Ball
+    uniqueID: 4567890123
+    locked: 0
+  - name: UI
+    uniqueID: 5678901234
+    locked: 0

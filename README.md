@@ -4,10 +4,83 @@ A 2D retro-style basketball game inspired by NBA Jam, featuring the historical A
 
 ## Features
 
-- **Team Selection**: Choose from 27 non-existent ABA teams, each with unique colors and players.
+- **Team Selection**: Choose from 27 historical ABA teams, each with unique colors and players.
 - **2v2 Gameplay**: Fast-paced 2v2 basketball with exaggerated player movements and arcade-style gameplay.
 - **3-Point Contest**: Test your shooting skills in a timed 3-point shooting competition.
 - **Retro Polish**: 16-bit pixel art style with animations, sound effects, and 1970s elements.
+
+## Codebase Review (v2)
+
+### Project Architecture Overview
+
+ABAJAM follows a well-structured Unity architecture with clean separation of concerns:
+
+#### Scene Flow
+1. **Team Selection** → Choose from 27 ABA teams
+2. **Game Mode Selection** → 2v2 or 3-Point Contest
+3. **Game Scenes** → MainGameScene or ThreePointContestScene
+
+#### Core Components
+
+1. **GameManager.cs**
+   - Singleton pattern for cross-scene persistence
+   - Manages team selection and scene transitions
+   - Stores references to selected team and opponent
+
+2. **TeamManager.cs**
+   - Defines Team and Player classes
+   - Contains data for all 27 ABA teams with colors
+   - Handles random opponent selection
+
+3. **PlayerController.cs**
+   - Controls player movement and actions (shooting, stealing)
+   - Implements AI behavior for CPU-controlled players
+   - Handles ball possession and passing logic
+
+4. **BallController.cs**
+   - Manages ball physics and visual effects
+   - Implements shooting, passing, and scoring detection
+   - Features ABA-themed visual effects (red/white/blue ball)
+
+5. **GameController.cs**
+   - Core game logic for 2v2 mode
+   - Manages quarters, score, and game state
+   - Handles "on fire" special abilities
+
+6. **ThreePointContest.cs**
+   - Specialized logic for 3-point contest
+   - Manages shooting spots, ball racks, and timing
+   - Implements money ball mechanics
+
+### Code Quality Assessment
+
+#### Strengths
+- Clean separation of concerns between components
+- Consistent naming conventions and good documentation
+- Proper use of Unity's component architecture
+- Well-organized project structure
+- Good use of coroutines for timing-based events
+
+#### Potential Improvements
+1. **Code Refactoring**
+   - Some lengthy methods in GameController and ThreePointContest could be refactored into smaller, more focused methods
+   - Duplicate code exists between game modes that could be abstracted
+
+2. **Data Management**
+   - Team data is hardcoded rather than stored in external configuration files
+   - Consider using ScriptableObjects for team data
+
+3. **Player System**
+   - Player stats generation is relatively basic
+   - Could implement more complex player attributes and abilities
+
+4. **Physics System**
+   - Shot physics calculations could be more sophisticated
+   - Could implement more realistic ball handling and collision
+
+5. **UI System**
+   - UI implementation is functional but could be enhanced with animations
+   - Add more detailed stat tracking and display
 
 ## Historical Team Colors
 
@@ -91,35 +164,6 @@ ABAJam/
 - Arrow keys: Move between shooting spots
 - P or Escape: Pause game
 
-## Core Scripts
-
-### TeamManager.cs
-Manages the 27 non-existent ABA teams, their colors, and player data.
-
-### GameManager.cs
-Singleton that handles the global game state and persists across scenes.
-
-### TeamSelectionMenu.cs
-Handles the team selection UI and logic.
-
-### GameModeSelection.cs
-Manages the game mode selection UI and logic.
-
-### PlayerController.cs
-Controls player movement, AI behavior, and interactions with the ball.
-
-### BallController.cs
-Handles ball physics, shooting, and scoring.
-
-### GameController.cs
-Manages the 2v2 game logic, scoring, and game state.
-
-### ShootingSpot.cs
-Defines shooting spots for the 3-point contest.
-
-### ThreePointContest.cs
-Manages the 3-point contest mode.
-
 ## Game Mechanics
 
 ### 2v2 Gameplay
@@ -138,6 +182,30 @@ Manages the 3-point contest mode.
 ## Development
 
 This project was created using Unity and C#. The game features a modular architecture with separate scenes for each mode and a centralized GameManager for data persistence.
+
+## Future Development Roadmap
+
+Based on the code review, potential future enhancements could include:
+
+1. **Enhanced Player Stats System**
+   - Implement more realistic player attributes
+   - Add player fatigue and stamina mechanics
+
+2. **Improved AI Behavior**
+   - More sophisticated opponent AI with different play styles
+   - Dynamic difficulty adjustment
+
+3. **Additional Game Modes**
+   - Season mode with standings and playoffs
+   - Historical ABA challenges based on real events
+
+4. **Visual Enhancements**
+   - More detailed player sprites and animations
+   - Additional court designs based on historical ABA venues
+
+5. **Performance Optimizations**
+   - Refactor code for better performance
+   - Implement object pooling for frequently instantiated objects
 
 ## Credits
 
